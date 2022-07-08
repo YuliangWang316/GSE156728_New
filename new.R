@@ -1,5 +1,5 @@
 library(dplyr)
-a<-read.table("c:/Users/xjmik/Desktop/Rawdata3.txt",sep = "\t",header = TRUE,row.names = 1)
+a<-read.table("c:/Users/xjmik/Documents/Rawdata&scaledata3.txt",sep = "\t",header = TRUE,row.names = 1)
 a<-a[-1,]
 b<-unique(a$a.i.)
 q<-data.frame(0,0,0,0,0,0)
@@ -110,7 +110,8 @@ remove(q,i,j)
 q<-data.frame(0,0,0,0)
 colnames(q)<-c("d","f","o","n")
 for (i in 1:35) {
-  e<-a[which(a$a.i.== b[1]),]
+  e<-a[which(a$a.i.== b[i]),]
+  if(length(rownames(e))>1){
   for (d in 3:5) {
     for (f in 6:8) {
       n<-cor.test(e[,d],e[,f],method = "spearman",exact = TRUE)
@@ -199,5 +200,6 @@ for (i in 1:35) {
     }
   }
   remove(f,g,h,c,e)
+  }
 }
 write.table(q,"newsingle.txt",sep = "\t")

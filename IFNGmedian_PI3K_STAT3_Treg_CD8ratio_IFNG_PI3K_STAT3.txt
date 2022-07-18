@@ -1,0 +1,7 @@
+"IFNGmedian_PI3K_STAT3_Treg_CD8ratio_IFNG_PI3K_STAT3"
+"1"	"1-9"
+"2"	"1-10"
+"3"	"2-10"
+"4"	"3-9"
+"5"	"3-10"
+"6"	"4-9"

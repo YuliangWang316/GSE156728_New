@@ -1,4 +1,4 @@
-a<-read.table("c:/Users/xjmik/Documents/newcombo.txt",sep = "\t",header = TRUE,row.names = 1)
+a<-read.table("c:/Users/xjmik/Documents/scalenewcombo.txt",sep = "\t",header = TRUE,row.names = 1)
 a<-a[-1,]
 a<-a[which(a$n != "NA"),]
 a<-a[which(a$n<0.05),]
@@ -49,6 +49,15 @@ IFNG_PI3K_STAT3<-intersect(Treg_1c_median_IFNG$p,PI3K_STAT3)
 Treg_CD8_IFNG_PI3K_STAT3<-intersect(Treg_CD8,IFNG_PI3K_STAT3)
 Treg_CD8ratio_IFNG_PI3K_STAT3<-intersect(Treg_CD8ratio,IFNG_PI3K_STAT3)
 
+Treg_IFNG_median<-a[which(a$d == "7" & a$o >0),]
+Treg_IFNG_median_STAT3<-Treg_IFNG_median[which(Treg_IFNG_median$f == "9" | Treg_IFNG_median$f == "10" | Treg_IFNG_median$f == "11" | Treg_IFNG_median$f == "12" | Treg_IFNG_median$f == "13" | Treg_IFNG_median$f == "14" | Treg_IFNG_median$f == "15" | Treg_IFNG_median$f == "16" | Treg_IFNG_median$f == "17"),]
+Treg_IFNG_median_PI3K<-Treg_IFNG_median[which(Treg_IFNG_median$f == "18" | Treg_IFNG_median$f == "19" | Treg_IFNG_median$f == "20" | Treg_IFNG_median$f == "21" | Treg_IFNG_median$f == "22" | Treg_IFNG_median$f == "23" | Treg_IFNG_median$f == "24" | Treg_IFNG_median$f == "25" | Treg_IFNG_median$f == "26"),]
+IFNGmedian_PI3K_STAT3<-intersect(Treg_IFNG_median_PI3K$p,Treg_IFNG_median_STAT3$p)
+IFNGmedian_PI3K_STAT3_Treg_CD8_IFNG_PI3K_STAT3<-intersect(IFNGmedian_PI3K_STAT3,Treg_CD8_IFNG_PI3K_STAT3)
+IFNGmedian_PI3K_STAT3_Treg_CD8ratio_IFNG_PI3K_STAT3<-intersect(IFNGmedian_PI3K_STAT3,Treg_CD8ratio_IFNG_PI3K_STAT3)
+write.table(as.data.frame(IFNGmedian_PI3K_STAT3_Treg_CD8_IFNG_PI3K_STAT3),"IFNGmedian_PI3K_STAT3_Treg_CD8_IFNG_PI3K_STAT3.txt",sep = "\t")
+write.table(as.data.frame(IFNGmedian_PI3K_STAT3_Treg_CD8ratio_IFNG_PI3K_STAT3),"IFNGmedian_PI3K_STAT3_Treg_CD8ratio_IFNG_PI3K_STAT3.txt",sep = "\t")
+
 Treg_1c_sum<-a[which(a$d == "5"  & a$o <0),]
 Treg_1c_sum_IFNG<-Treg_1c_sum[which(Treg_1c_sum$f == "6" | Treg_1c_sum$f == "7" | Treg_1c_sum$f == "8"),]
 CD8ratio<-Treg_1c_sum[which(Treg_1c_sum$f=="38"),]
@@ -72,5 +81,5 @@ Treg_IFNG_sum_PI3K<-Treg_IFNG_sum[which(Treg_IFNG_sum$f == "18" | Treg_IFNG_sum$
 IFNGsum_PI3K_STAT3<-intersect(Treg_IFNG_sum_PI3K$p,Treg_IFNG_sum_STAT3$p)
 IFNGsum_PI3K_STAT3_Treg_CD8_IFNG_PI3K_STAT3<-intersect(IFNGsum_PI3K_STAT3,Treg_CD8_IFNG_PI3K_STAT3)
 IFNGsum_PI3K_STAT3_Treg_CD8ratio_IFNG_PI3K_STAT3<-intersect(IFNGsum_PI3K_STAT3,Treg_CD8ratio_IFNG_PI3K_STAT3)
-write.table(as.data.frame(IFNGsum_PI3K_STAT3_Treg_CD8_IFNG_PI3K_STAT3),"IFNGsum_PI3K_STAT3_Treg_CD8_IFNG_PI3K_STAT3noscale.txt",sep = "\t")
-write.table(as.data.frame(IFNGsum_PI3K_STAT3_Treg_CD8ratio_IFNG_PI3K_STAT3),"IFNGsum_PI3K_STAT3_Treg_CD8ratio_IFNG_PI3K_STAT3noscale.txt",sep = "\t")
+write.table(as.data.frame(IFNGsum_PI3K_STAT3_Treg_CD8_IFNG_PI3K_STAT3),"IFNGsum_PI3K_STAT3_Treg_CD8_IFNG_PI3K_STAT3.txt",sep = "\t")
+write.table(as.data.frame(IFNGsum_PI3K_STAT3_Treg_CD8ratio_IFNG_PI3K_STAT3),"IFNGsum_PI3K_STAT3_Treg_CD8ratio_IFNG_PI3K_STAT3.txt",sep = "\t")
